@@ -58,6 +58,9 @@ class App extends React.Component{
         const validZip = this.state.validZip;
         let restaurant;
         let frontEnd;
+        let background = <img id="background" src = {
+            "https://www.classiblogger.com/wp-content/uploads/2014/08/list-of-cuisines-classiblogger.png"
+            }/>
         if(validZip){
             restaurant = <Restaurants id="restaurants" key="restaurants" 
             zipcode={this.state.zipcode} optionChoice={this.state.optionChoice}
@@ -65,6 +68,7 @@ class App extends React.Component{
             data = {this.state.data}
             />
             frontEnd=undefined;
+            background=undefined;
         }
 
         if(!validZip){
@@ -76,9 +80,10 @@ class App extends React.Component{
                 </label>
                 <select id="race" onChange={this.setOption}>
                 <option value='' selected>Choose an Option</option>
-                <option value='mexican'>Mexican</option>
-                <option value='chinese' >Chinese</option>
-                <option value='thai'>Thai</option>
+                <option value='Korean'>Korean</option>
+                <option value='Mexican'>Mexican</option>
+                <option value='Chinese' >Chinese</option>
+                <option value='Thai'>Thai</option>
                 <option value='American'>American</option>
                 <option value='Indian'>Indian</option>
                 <option value='Fast'>Fast</option>
@@ -94,6 +99,7 @@ class App extends React.Component{
         return(
             <div>
                 {frontEnd}
+                {background}
                 {restaurant}
             </div>
         )
@@ -106,10 +112,12 @@ if(props.data){
         return(
             <div>
                 <div className = "column">
-                <div>
-               <ul>
+         
+               <ul className="list1">
+               <a href={props.data[0].url}>
                <img id="Rest1" src={props.data[0].image_url}/> 
-               <li>
+               </a>
+               <li className="restName">
                Restaurant Name:{props.data[0].name}
                </li>
                <li>
@@ -122,10 +130,12 @@ if(props.data){
                location: {props.data[0].location.display_address[0]}
                </li>               
                </ul>
-                </div>
-                <div>
-               <ul>
+
+               
+               <ul >
+               <a href={props.data[1].url}>
                <img id="Rest2" src={props.data[1].image_url}/> 
+               </a>
                <li>
                Restaurant Name:{props.data[1].name}
                </li>
@@ -139,10 +149,12 @@ if(props.data){
                location: {props.data[1].location.display_address[0]}
                </li>               
                </ul>
-                </div>
-                <div>
+             
+               
                <ul>
+               <a href={props.data[1].url}>
                <img id="Rest3" src={props.data[2].image_url}/> 
+               </a>
                <li>
                Restaurant Name:{props.data[2].name}
                </li>
@@ -156,9 +168,8 @@ if(props.data){
                location: {props.data[2].location.display_address[0]}
                </li>               
                </ul>
-                </div>
-                </div>
                 
+                </div>
             </div>
         )
     }
@@ -168,7 +179,7 @@ if(props.apiCall){
 }
 if(!props.apiCall && props.data === null){
     return(
-        <div>
+        <div className="bouncer">
             <button className="bounce" onClick={props.fetchreq}>
                 Confirm
             </button>
@@ -180,8 +191,7 @@ if(!props.apiCall && props.data === null){
 }
 else{
     return(
-        <div>
-        Quickie Loading page 
+        <div id="loader">
         </div>
     )
 }

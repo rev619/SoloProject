@@ -1,9 +1,16 @@
 body{
     background:palegoldenrod;
+
 }
 h1{
     font-family: cursive;
     text-align: center;
+}
+#background{
+  background-size:'cover';
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 input {
     background-color:lavender;
@@ -42,8 +49,10 @@ input {
 
 }
 #loadingPage{
-    color: #111; font-family: 'Helvetica Neue', sans-serif; 
-    font-size: 30px; font-weight: bold; text-align: center; 
+    color: #111; font-family: cursive; 
+    text-align: center;
+    font-size: 30px;
+
 }
 @-webkit-keyframes bounce {
     0% {
@@ -64,11 +73,12 @@ transform: scale(1,1) translate(0px, 0px);
 }
 
 .bounce {
+  display:flex;
+  justify-content: center;
   text-align:center;
+  align-self: center;
   width: 40%;
- margin-left: 30%;
- margin-right: 30%;
-  margin:0 auto;
+  margin:auto;
   margin-top:100px;
   height:20px;
   width:150px;
@@ -81,12 +91,25 @@ transform: scale(1,1) translate(0px, 0px);
   position: relative;
   width: 50%;
 }
-
+ul {
+  padding: 20px;
+  margin-left: 35px;
+  border: 1px solid red;
+  outline: 5px dotted green;
+  list-style-type: none;
+}
+li{
+  font-family:cursive;
+}
 .column {
+  display:flex;
+  justify-content: center;
     width: auto;
     column-count: 3;
   }
-
+.className{
+  font-size: 20px;
+}
 #Rest1 {
 display:grid;
   width: 300px; 
@@ -98,7 +121,7 @@ display:grid;
   backface-visibility: hidden;
   border-radius: 50%;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
 }  
 #Rest2 {
     display:grid;
@@ -111,6 +134,7 @@ display:grid;
     backface-visibility: hidden;
     border-radius: 50%;
     background-color: white;
+   
   }
 #Rest3 {
     display:grid;
@@ -123,4 +147,22 @@ display:grid;
     backface-visibility: hidden;
     border-radius: 50%;
     background-color: white;
+   
+}
+
+#loader {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid red; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
