@@ -18,6 +18,7 @@ class App extends React.Component{
         this.setOption = this.setOption.bind(this);
         this.fetchreq = this.fetchreq.bind(this);
         this.fetchdata = this.fetchdata.bind(this);
+        this.setZip = this.setZip.bind(this);
       }
       setOption(event){
           this.setState({optionChoice:event.target.value})
@@ -53,6 +54,9 @@ class App extends React.Component{
            console.log('err is ' + err)
        })
       }
+      setZip(){
+          this.setState({validZip:null})
+      }
 
     render(){
         const validZip = this.state.validZip;
@@ -65,6 +69,7 @@ class App extends React.Component{
             restaurant = <Restaurants id="restaurants" key="restaurants" 
             zipcode={this.state.zipcode} optionChoice={this.state.optionChoice}
             fetchreq={this.fetchreq} apiCall ={this.state.apiCall} fetchdata={this.fetchdata}
+            setZip ={this.setZip}
             data = {this.state.data}
             />
             frontEnd=undefined;
@@ -130,8 +135,7 @@ if(props.data){
                location: {props.data[0].location.display_address[0]}
                </li>               
                </ul>
-
-               
+         
                <ul >
                <a href={props.data[1].url}>
                <img id="Rest2" src={props.data[1].image_url}/> 
@@ -149,8 +153,7 @@ if(props.data){
                location: {props.data[1].location.display_address[0]}
                </li>               
                </ul>
-             
-               
+                            
                <ul>
                <a href={props.data[1].url}>
                <img id="Rest3" src={props.data[2].image_url}/> 
@@ -182,6 +185,9 @@ if(!props.apiCall && props.data === null){
         <div className="bouncer">
             <button className="bounce" onClick={props.fetchreq}>
                 Confirm
+            </button>
+            <button className="back" onClick={props.setZip}>
+                Back
             </button>
             <p id="loadingPage">
         Zipcode {' ' + props.zipcode} and type of food is {' '+ props.optionChoice}    
